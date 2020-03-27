@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticking Counter Clock</title>
+    <script type="text/javascript">
+        function getDate() {
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = formatDateAndMonth(date.getUTCMonth() + 1);
+            let day = formatDateAndMonth(date.getDate());
+            let hour = formatDateAndMonth(date.getHours());
+            let minute = formatDateAndMonth(date.getMinutes());
+            let second = date.getSeconds();
+            return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+        }
+        function formatDateAndMonth(dm) {
+            if(dm < 10)
+                return "0" + dm;
+            return dm;
+        } 
+        setInterval(() => {
+            document.getElementById('timer').innerHTML = getDate();
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div id="timer" style="width: 100%; font-size: 56px; font-weight: bold; margin-left: 30%; margin-top: 20%;"></div>
+</body>
+</html>
